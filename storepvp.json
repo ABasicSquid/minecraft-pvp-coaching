@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "title": "SWORD",
+        "price": 1
+    },
+    {
+        "id": 2,
+        "title": "VANILLA",
+        "price": 4
+    },
+    {
+        "id": 3,
+        "title": "MACE",
+        "price": 3
+    },
+    {
+        "id": 4,
+        "title": "AXE",
+        "price": 2
+    }
+]

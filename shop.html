@@ -1,0 +1,201 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: white;
+        }
+
+        .header {
+            height: 50px;
+            background: #ffcc00;
+            position: relative;
+            text-align: center;
+        }
+
+        .back {
+            position: absolute;
+            left: 5px;
+            top: 0;
+            color: blue;
+            text-decoration: underline;
+            font-size: 14px;
+        }
+
+        .shop {
+            font-size: 21px;
+            font-weight: bold;
+            padding-top: 20px;
+        }
+
+        .cart-open {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            padding: 7px 12px;
+            border: 2px solid black;
+            background: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .cart-modal {
+            width: min(420px, calc(100% - 24px));
+            max-height: 80vh;
+            padding: 20px;
+            border: 3px solid black;
+            background: white;
+        }
+
+        .cart-modal::backdrop {
+            background: rgb(0 0 0 / 55%);
+        }
+
+        .cart-heading,
+        .cart-footer,
+        .cart-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .cart-heading h2 {
+            margin: 0 0 16px;
+            font-size: 20px;
+        }
+
+        .cart-close,
+        .cart-clear,
+        .cart-remove {
+            border: 1px solid black;
+            background: #eeeeee;
+            padding: 6px 10px;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            display: grid;
+            gap: 8px;
+            max-height: 45vh;
+            overflow-y: auto;
+        }
+
+        .cart-row {
+            border-bottom: 1px solid #cccccc;
+            padding: 8px 0;
+        }
+
+        .cart-row-info {
+            display: grid;
+            gap: 4px;
+        }
+
+        .cart-empty {
+            margin: 0;
+            padding: 12px 0;
+        }
+
+        .cart-footer {
+            margin-top: 16px;
+        }
+
+        .item {
+            height: 80px;
+            border: 3px solid black;
+            position: relative;
+        }
+
+        .sword {
+            background: #008cff;
+        }
+
+        .vanilla {
+            background: #d020d8;
+        }
+
+        .mace {
+            background: #999999;
+        }
+
+        .axe {
+            background: #20c94b;
+        }
+
+        .name {
+            position: absolute;
+            top: 12px;
+            left: 8px;
+            font-size: 14px;
+        }
+
+        .buy {
+            position: absolute;
+            top: 7px;
+            right: 8px;
+            width: 60%;
+            height: 20px;
+            border: none;
+            background: #dddddd;
+            font-size: 13px;
+        }
+
+        .price {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 20px;
+            border-radius: 50%;
+            background: #dddddd;
+            text-align: center;
+            font-size: 13px;
+            padding-top: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <a href="index.html" style="
+    position: absolute; top: 15px; left: 15px;
+    padding: 8px 18px; background: #b58353; color: #fff;
+    text-decoration: none; font: bold 15px sans-serif; border-radius: 4px;
+">Назад</a>
+
+        <div class="shop">SHOP</div>
+        <button class="cart-open" id="cart-open" type="button" aria-haspopup="dialog">
+            Кошик <span id="cart-count">0</span>
+        </button>
+    </div>
+    <div class = "cards"></div> 
+
+    <dialog class="cart-modal" id="cart-modal" aria-labelledby="cart-title">
+        <div class="cart-heading">
+            <h2 id="cart-title">Кошик</h2>
+            <button class="cart-close" id="cart-close" type="button" aria-label="Закрити кошик">Закрити</button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer">
+            <button class="cart-clear" id="cart-clear" type="button">Очистити</button>
+            <strong>Разом: <span id="cart-total">0</span>$</strong>
+        </div>
+    </dialog>
+    
+<script src="script.js"></script>
+</body>
+</html>
