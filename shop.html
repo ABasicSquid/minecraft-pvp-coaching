@@ -79,11 +79,46 @@
 
         .cart-close,
         .cart-clear,
-        .cart-remove {
+        .cart-remove,
+        .cart-order {
             border: 1px solid black;
             background: #eeeeee;
             padding: 6px 10px;
             cursor: pointer;
+        }
+
+        .cart-order {
+            display: block;
+            width: 100%;
+            margin-top: 16px;
+            border: 2px solid black;
+            background: #ffcc00;
+            font-weight: bold;
+            padding: 10px 12px;
+        }
+
+        .cart-discord-label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        .cart-discord-input {
+            width: 100%;
+            margin-top: 6px;
+            padding: 9px;
+            border: 1px solid black;
+            font: inherit;
+        }
+
+        .cart-order-error {
+            margin: 8px 0 0;
+            color: #c00;
+        }
+
+        .cart-success {
+            margin: 0;
+            text-align: center;
         }
 
         .cart-items {
@@ -185,14 +220,24 @@
     <div class = "cards"></div> 
 
     <dialog class="cart-modal" id="cart-modal" aria-labelledby="cart-title">
-        <div class="cart-heading">
-            <h2 id="cart-title">Кошик</h2>
-            <button class="cart-close" id="cart-close" type="button" aria-label="Закрити кошик">Закрити</button>
+        <div id="cart-content">
+            <div class="cart-heading">
+                <h2 id="cart-title">Кошик</h2>
+                <button class="cart-close" id="cart-close" type="button" aria-label="Закрити кошик">Закрити</button>
+            </div>
+            <div class="cart-items" id="cart-items"></div>
+            <div class="cart-footer">
+                <button class="cart-clear" id="cart-clear" type="button">Очистити</button>
+                <strong>Разом: <span id="cart-total">0</span>$</strong>
+            </div>
+            <button class="cart-order" id="cart-order" type="button">Оформити замовлення</button>
+            <p class="cart-order-error" id="cart-order-error" role="alert" hidden>Введіть необхідні дані</p>
+            <label class="cart-discord-label" for="cart-discord">Введіть свій Discord</label>
+            <input class="cart-discord-input" id="cart-discord" name="discord" type="text" autocomplete="username">
         </div>
-        <div class="cart-items" id="cart-items"></div>
-        <div class="cart-footer">
-            <button class="cart-clear" id="cart-clear" type="button">Очистити</button>
-            <strong>Разом: <span id="cart-total">0</span>$</strong>
+        <div id="cart-confirmation" hidden>
+            <h2 id="cart-confirmation-title" class="cart-success">Ваше замовлення оформлене, чекайте відповіді!</h2>
+            <button class="cart-close" id="cart-confirmation-close" type="button">Закрити</button>
         </div>
     </dialog>
     
