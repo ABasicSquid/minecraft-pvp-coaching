@@ -7,6 +7,10 @@ const cartModal = document.querySelector("#cart-modal");
 const cartItemsBlock = document.querySelector("#cart-items");
 const cartCount = document.querySelector("#cart-count");
 const cartTotal = document.querySelector("#cart-total");
+const cartDiscord = document.querySelector("#cart-discord");
+const cartOrderError = document.querySelector("#cart-order-error");
+const cartContent = document.querySelector("#cart-content");
+const cartConfirmation = document.querySelector("#cart-confirmation");
 
 // ========== Отримання товарів з JSON ==========
 async function fetchProducts() {
@@ -70,6 +74,26 @@ productsBlock.addEventListener("click", event => {
 
 document.querySelector("#cart-open").addEventListener("click", () => cartModal.showModal());
 document.querySelector("#cart-close").addEventListener("click", () => cartModal.close());
+document.querySelector("#cart-confirmation-close").addEventListener("click", () => cartModal.close());
+document.querySelector("#cart-order").addEventListener("click", () => {
+    if (!cartDiscord.value.trim()) {
+        cartOrderError.hidden = false;
+        return;
+    }
+
+    cartContent.hidden = true;
+    cartConfirmation.hidden = false;
+    cartModal.setAttribute("aria-labelledby", "cart-confirmation-title");
+});
+cartDiscord.addEventListener("input", () => {
+    if (cartDiscord.value.trim()) cartOrderError.hidden = true;
+});
+cartModal.addEventListener("close", () => {
+    cartOrderError.hidden = true;
+    cartContent.hidden = false;
+    cartConfirmation.hidden = true;
+    cartModal.setAttribute("aria-labelledby", "cart-title");
+});
 document.querySelector("#cart-clear").addEventListener("click", () => {
     cart = [];
     renderCart();
